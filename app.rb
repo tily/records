@@ -31,7 +31,7 @@ end
 def properties_from_release(release)
   title_str = release.title
   artists_str = release.artists.map {|artist| artist.name.gsub(/ \(\d+\)$/, "") }.uniq.join(", ")
-  tracklist_str = release.tracklist.map {|track| "#{track.position} #{track.title}"}.join("\n")
+  tracklist_str = release.tracklist.map {|track| "#{track.position} #{track.title}"}.join("\n")[0, 2000]
   genres_arr = release.genres ? release.genres.map {|genre| {name: genre.gsub(/Folk, World, & Country/, "Folk / World / Country") } } : nil
   styles_arr = release.styles ? release.styles.map {|style| {name: style.gsub(/Folk, World, & Country/, "Folk / World / Country") } } : nil
   properties = {
